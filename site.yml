@@ -11,7 +11,7 @@
         - php-mysql
   - name: Set up wp-cli
     get_url:
-        uri: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest: /usr/bin/wp-cli.phar
         mode: 0755
   - name: download wordpress
