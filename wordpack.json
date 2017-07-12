@@ -10,9 +10,7 @@
   "provisioners":[
     {
       "type": "shell",
-      "script": [
-        "yumscript.sh"
-      ]
+      "script": "yumscript.sh"
     },
     
     {
