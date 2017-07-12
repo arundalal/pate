@@ -1,0 +1,10 @@
+{
+  "_comment": "This is a comment",
+  "builders": [
+   {
+  "type": "docker",
+  "image": "ubuntu",
+  "export_path": "image.tar"
+}
+  ]
+}
