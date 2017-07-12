@@ -11,7 +11,7 @@
     {
       "type": "shell",
       "script": [
-        "./yumscript.sh"
+        "yumscript.sh"
       ]
     },
     
