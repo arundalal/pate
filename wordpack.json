@@ -1,10 +1,20 @@
 {
-  "_comment": "This is a comment",
   "builders": [
    {
   "type": "docker",
-  "image": "ubuntu",
-  "export_path": "image.tar"
-}
+  "image": "centos",
+  "commit": true
+   }
+  ],
+  
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "arundalal/wordpress",
+        "tag": "0.1"
+      },
+      "docker-push"
+    ]
   ]
 }
