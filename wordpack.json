@@ -9,13 +9,8 @@
   
   "provisioners":[
     {
-      "type": "shell",
-      "script": "yumscript.sh"
-    },
-    
-    {
-      "type": "ansible-local",
-      "playbook_file": "site.yml"
+      "type": "ansible",
+      "playbook_file": "./site.yml"
       
     }
 
