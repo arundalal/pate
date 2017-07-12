@@ -20,4 +20,5 @@
         chdir: /var/www/html
   - name:  wordpress config setup
     command: wp core config --dbname=wpdata --dbuser=wpuser --dbpass=password
-    
+    args:
+        chdir: /var/www/html
