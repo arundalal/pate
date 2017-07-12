@@ -19,6 +19,7 @@
         "type": "docker-push",
         "login": true,
         "login_email": "arundalal786@gmail.com",
+        "login_username": "arundalal"
         "login_password": "qwerty123"
       }  
     ]
