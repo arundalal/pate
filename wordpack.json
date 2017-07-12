@@ -10,9 +10,8 @@
   "provisioners":[
     {
       "type": "shell",
-      "inline": [
-        "yum install epel-release -y",
-        "yum install ansible -y"
+      "script": [
+        "./yumscript.sh"
       ]
     },
     
