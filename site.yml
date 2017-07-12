@@ -12,7 +12,7 @@
   - name: Set up wp-cli
     get_url:
         url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-        dest: /usr/bin/wp-cli.phar
+        dest: /usr/bin/wp
         mode: 0755
   - name: download wordpress
     command: wp core download
