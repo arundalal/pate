@@ -11,8 +11,8 @@
     {
       "type": "shell",
       "inline": [
-        "sudo yum install epel-release -y",
-        "sudo yum install ansible -y"
+        "yum install epel-release -y",
+        "yum install ansible -y"
       ]
     },
     
