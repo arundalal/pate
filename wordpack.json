@@ -2,14 +2,14 @@
   "builders": [
    {
   "type": "docker",
-  "image": "centos",
+  "image": "arundalal/defaultcentos",
   "commit": true
    }
   ],
   
   "provisioners":[
     {
-      "type": "ansible",
+      "type": "ansible-local",
       "playbook_file": "./site.yml"
       
     }
