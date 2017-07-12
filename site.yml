@@ -1,0 +1,23 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: Install Apache
+    yum: name=httpd state=present
+  - name: Install PHP PHP-MYSQL
+    yum: name={{ item }} state=present
+    with_items:
+        - php
+        - php-mysql
+  - name: Set up wp-cli
+    get_url:
+        uri: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        dest: /usr/bin/wp-cli.phar
+        mode: 0755
+  - name: download wordpress
+    command: wp core download
+    args:
+        chdir: /var/www/html
+  - name:  wordpress config setup
+    command: wp core config --dbname=wpdata --dbuser=wpuser --dbpass=password
+    
