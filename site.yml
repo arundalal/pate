@@ -18,7 +18,7 @@
     args:
         chdir: /var/www/html
   - name:  wordpress config setup
-    command: wp core config --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
+    command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /var/www/html
   
