@@ -2,7 +2,7 @@
   "builders": [
    {
   "type": "docker",
-  "image": "arundalal/defaultcentos",
+  "image": "httpd",
   "commit": true
    }
   ],

@@ -2,13 +2,12 @@
 - hosts: localhost
   remote_user: root
   tasks:
-  - name: Install Apache
-    yum: name=httpd state=present
   - name: Install PHP PHP-MYSQL
     yum: name={{ item }} state=present
     with_items:
-        - php
-        - php-mysql
+        - php5
+        - php5-mysql
+        - mysql-client
   - name: Set up wp-cli
     get_url:
         url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -22,10 +21,4 @@
     command: wp core config --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /var/www/html
-  - name: Apache service
-    service:
-        name: httpd
-        enabled: yes
-  - name: Running apache service
-    command: /usr/sbin/httpd -D FOREGROUND
   
