@@ -14,7 +14,7 @@
         dest: /usr/bin/wp
         mode: 0755
   - name: download wordpress
-    command: wp core download
+    command: wp core download --allow-root
     args:
         chdir: /var/www/html
   - name:  wordpress config setup
