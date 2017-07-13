@@ -25,7 +25,6 @@
   - name: Apache service
     service:
         name: httpd
-        state: started
         enabled: yes
   - name: Running apache service
     command: /usr/sbin/httpd -D FOREGROUND
