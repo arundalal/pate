@@ -21,5 +21,4 @@
     command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /usr/local/apache2/htdocs
-  - name: apche 2 service
-    command: httpd -DFOREGROUND
+  
