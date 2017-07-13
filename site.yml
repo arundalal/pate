@@ -22,8 +22,11 @@
     command: wp core config --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /var/www/html
-  - name: Apache service started
+  - name: Apache service
     service:
         name: httpd
         state: started
         enabled: yes
+  - name: Running apache service
+    command: /usr/sbin/httpd -D FOREGROUND
+  
