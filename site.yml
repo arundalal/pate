@@ -16,9 +16,9 @@
   - name: download wordpress
     command: wp core download --allow-root
     args:
-        chdir: /var/www/html
+        chdir: /usr/local/apache2/htdocs
   - name:  wordpress config setup
     command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
-        chdir: /var/www/html
+        chdir: /usr/local/apache2/htdocs
   
