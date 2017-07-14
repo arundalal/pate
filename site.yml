@@ -26,6 +26,8 @@
     command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /usr/local/apache2/htdocs
+  - name: wordpress ownership
+    command: chown -R www-data:www-data /usr/local/apache2/htdocs
   - name: apache2 restart
     service:
         name: apache2
