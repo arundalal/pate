@@ -13,6 +13,8 @@
         url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest: /usr/bin/wp
         mode: 0755
+  - name: remove index.html
+    command: rm -rf /usr/local/apache2/htdocs/index.html
   - name: download wordpress
     command: wp core download --allow-root
     args:
