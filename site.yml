@@ -16,7 +16,7 @@
   - name: remove index.html
     command:  mv index.html index.html.bck
     args:
-        chdir /usr/local/apache2/htdocs/
+        chdir: /usr/local/apache2/htdocs/
   - name: download wordpress
     command: wp core download --allow-root
     args:
