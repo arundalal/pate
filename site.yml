@@ -14,7 +14,9 @@
         dest: /usr/bin/wp
         mode: 0755
   - name: remove index.html
-    command: rm -rf /usr/local/apache2/htdocs/index.html
+    command:  mv index.html index.html.bck
+    args:
+        chdir /usr/local/apache2/htdocs/
   - name: download wordpress
     command: wp core download --allow-root
     args:
