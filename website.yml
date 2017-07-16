@@ -9,9 +9,8 @@
         dest: /usr/bin/wp
         mode: 0755
   - name: remove index.html
-    command:  mv index.html index.html.bck
-    args:
-        chdir: /var/www/html
+    command:  mkdir -p /var/www/html
+    
   - name: download wordpress
     command: wp core download --allow-root
     args:
