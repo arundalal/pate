@@ -15,7 +15,3 @@
         dest: /var/www/html
   - name: wordpress ownership
     command: chown -R www-data:www-data /var/www/html
-  - name: apache2 restart
-    service:
-        name: apache2
-        state: restarted
