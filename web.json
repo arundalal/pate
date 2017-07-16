@@ -28,7 +28,9 @@
       "readonlyRootFilesystem": null,
       "image": "arundalal/wordpress:0.2",
       "command": [
-        "httpd-foreground"
+        "httpd",
+        "-D",
+        "FOREGROUND"
       ],
       "user": null,
       "dockerLabels": null,

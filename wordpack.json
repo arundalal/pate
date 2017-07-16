@@ -2,26 +2,19 @@
   "builders": [
    {
   "type": "docker",
-  "image": "httpd",
+  "image": "arundalal/defaultcentos",
   "commit": true
+
    }
   ],
   
   "provisioners":[
     {
-      "type": "shell",
-      "inline": [
-        "echo \"deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main\" >> /etc/apt/sources.list",
-        "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367",
-        "apt-get -y update",
-        "apt-get install -y ansible"
-      ]
-    },
-    {
       "type": "ansible-local",
-      "playbook_file": "website.yml"
+      "playbook_file": "site.yml"
       
     }
+    
 
   ],
   

@@ -2,33 +2,29 @@
 - hosts: localhost
   remote_user: root
   tasks:
+  - name: Install Apache
+    yum: name=httpd state=present
   - name: Install PHP PHP-MYSQL
-    apt: name={{ item }} state=present
+    yum: name={{ item }} state=present
     with_items:
-        - php5
-        - php-pear
-        - php5-mysql
-        - mysql-client
+        - php
+        - php-mysql
+        - mysql
   - name: Set up wp-cli
     get_url:
         url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest: /usr/bin/wp
         mode: 0755
-  - name: remove index.html
-    command:  mv index.html index.html.bck
-    args:
-        chdir: /usr/local/apache2/htdocs/
   - name: download wordpress
-    command: wp core download --allow-root
+    command: wp core download
     args:
-        chdir: /usr/local/apache2/htdocs
-  - name:  wordpress config setup
-    command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
+        chdir: /var/www/html
+  - name: wordpress config
+    command: wp core config --dbhost=wordpresrds.czrmpuv90e38.us-east-1.rds.amazonaws.com   --dbname=wpdata --dbuser=wpuser --dbpass=password --skip-check
     args:
-        chdir: /usr/local/apache2/htdocs
-  - name: wordpress ownership
-    command: chown -R www-data:www-data /usr/local/apache2/htdocs
-  - name: apache2 restart
+        chdir: /var/www/html
+  - name: Apache service
     service:
-        name: apache2
-        state: restarted
+        name: httpd
+        enabled: yes
+  
