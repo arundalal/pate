@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  remote_user: root
+  tasks:
+  
+  - name: Set up wp-cli
+    get_url:
+        url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+        dest: /usr/bin/wp
+        mode: 0755
+  - name: remove index.html
+    command:  mv index.html index.html.bck
+    args:
+        chdir: /var/www/html
+  - name: download wordpress
+    command: wp core download --allow-root
+    args:
+        chdir: /var/www/html
+  - name:  wordpress config setup
+    command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
+    args:
+        chdir: /var/www/html
+  - name: wordpress ownership
+    command: chown -R www-data:www-data /var/www/html
+  - name: apache2 restart
+    service:
+        name: apache2
+        state: restarted
