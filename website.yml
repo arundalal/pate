@@ -13,8 +13,6 @@
     unarchive:
         src: /tmp/wordpress-4.8.tar.gz
         dest: /var/www/html
-  - file: /tmp/wordpress-4.8.tar.gz
-    state: absent
   - name: wordpress ownership
     command: chown -R www-data:www-data /var/www/html
   - name: apache2 restart
