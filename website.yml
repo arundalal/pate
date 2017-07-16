@@ -8,9 +8,10 @@
         url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
         dest: /usr/bin/wp
         mode: 0755
-  - name: remove index.html
+  - name: add directory
     command:  mkdir -p /var/www/html
-    
+  - name: add softlink
+    command: ln -s /usr/local/bin/php /usr/bin/php
   - name: download wordpress
     command: /usr/bin/wp core download --allow-root
     args:
