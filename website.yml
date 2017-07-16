@@ -12,11 +12,11 @@
     command:  mkdir -p /var/www/html
     
   - name: download wordpress
-    command: wp core download --allow-root
+    command: /usr/bin/wp core download --allow-root
     args:
         chdir: /var/www/html
   - name:  wordpress config setup
-    command: wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
+    command: /usr/bin/wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
     args:
         chdir: /var/www/html
   - name: wordpress ownership
