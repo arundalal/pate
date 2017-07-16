@@ -13,8 +13,7 @@
     unarchive:
         src: /tmp/wordpress-4.8.tar.gz
         dest: /var/www/html
-  - name: Delete tar file
-    file: /tmp/wordpress-4.8.tar.gz
+  - file: /tmp/wordpress-4.8.tar.gz
     state: absent
   - name: wordpress ownership
     command: chown -R www-data:www-data /var/www/html
