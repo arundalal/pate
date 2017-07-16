@@ -2,24 +2,24 @@
 - hosts: localhost
   remote_user: root
   tasks:
-  
-  - name: Set up wp-cli
-    get_url:
-        url: https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-        dest: /usr/bin/wp
-        mode: 0755
-  - name: add directory
-    command:  mkdir -p /var/www/html
-  - name: add softlink
-    command: ln -s /usr/local/bin/php /usr/bin/php
+  - name: Add html directory
+    file: /var/www/html
+    state: directory
+    mode: 0755
+    owner: www-data
+        
   - name: download wordpress
-    command: /usr/bin/wp core download --allow-root
-    args:
-        chdir: /var/www/html
-  - name:  wordpress config setup
-    command: /usr/bin/wp core config --allow-root --dbname=wpdata --dbuser=wpuser --dbpass=password --dbhost=db.mydevopstest.com --skip-check
-    args:
-        chdir: /var/www/html
+    get_url:
+        url: https://wordpress.org/wordpress-4.8.tar.gz
+        dest: /tmp
+        mode: 0755
+  - name: place wordpres files
+    unarchive:
+        src: /tmp/wordpress-4.8.tar.gz
+        dest: /var/www/html
+  - name: Delete tar file
+    file: /tmp/wordpress-4.8.tar.gz
+    state: absent
   - name: wordpress ownership
     command: chown -R www-data:www-data /var/www/html
   - name: apache2 restart
